@@ -37,7 +37,7 @@ namespace FirstQuarterTest
             {
                 System.Console.Write("{0,4}", array[i]);
             }
-            Console.WriteLine("\n");          
+            Console.WriteLine("\n");
         }
 
         public static void PrintArray(double[] array, string message)
@@ -88,29 +88,29 @@ namespace FirstQuarterTest
         }
 
         public static string[] FreeSizedArr(string message)
-        {            
+        {
             string[] array = new string[0];
             System.Console.WriteLine(message);
-            
+
             int i = 0;
             do
             {
                 Array.Resize(ref array, array.Length + 1);
                 array[i] = Console.ReadLine();
                 i++;
-            } while (array[i-1] != String.Empty);
+            } while (array[i - 1] != String.Empty);
             Array.Resize(ref array, array.Length - 1);
             return array;
         }
 
         public static void SetFontColor(int clr)
         {
-            ConsoleColor[] MyConsoleColors = new ConsoleColor[] { ConsoleColor.Blue, ConsoleColor.Cyan, ConsoleColor.DarkBlue, 
+            ConsoleColor[] MyConsoleColors = new ConsoleColor[] { ConsoleColor.Blue, ConsoleColor.Cyan, ConsoleColor.DarkBlue,
                 ConsoleColor.DarkCyan, ConsoleColor.DarkGray, ConsoleColor.DarkGreen, ConsoleColor.DarkMagenta, ConsoleColor.DarkRed,
                 ConsoleColor.DarkYellow, ConsoleColor.Gray, ConsoleColor.Green, ConsoleColor.Magenta, ConsoleColor.Red, ConsoleColor.White,
-                ConsoleColor.Yellow};
+                ConsoleColor.Yellow };
 
-            Console.ForegroundColor = MyConsoleColors[clr];            
+            Console.ForegroundColor = MyConsoleColors[clr];
         }
 
         public static async void RunningString(string endmessage, int delayMs)
@@ -143,7 +143,7 @@ namespace FirstQuarterTest
                             await Task.Delay(delayMs);
                         }
 
-                        SetFontColor(rnd.Next(1, 16));
+                        SetFontColor(rnd.Next(0, 15));
                     }
                 }
             }
