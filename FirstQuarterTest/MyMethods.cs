@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace FirstQuarterTest
 {
@@ -11,6 +12,13 @@ namespace FirstQuarterTest
     /// </summary>
     public class MyMethods
     {
+        public static void Header(string about)
+        {
+            Console.Clear();
+            Console.WriteLine("Антонкин Антон | Группа Разработчик 3776 | GeekBrains \n");
+            Console.WriteLine($"{about}\n");
+        }
+
         public static int GetNum(string message)
         {
             int num;
@@ -27,13 +35,9 @@ namespace FirstQuarterTest
             System.Console.WriteLine(message);
             for (int i = 0; i < array.Length; i++)
             {
-
                 System.Console.Write("{0,4}", array[i]);
-
             }
-            Console.WriteLine("\n");
-           
-
+            Console.WriteLine("\n");          
         }
 
         public static void PrintArray(double[] array, string message)
@@ -41,13 +45,18 @@ namespace FirstQuarterTest
             System.Console.WriteLine(message);
             for (int i = 0; i < array.Length; i++)
             {
-
                 System.Console.Write("{0,5}", array[i]);
-
             }
             Console.WriteLine("\n");
-
         }
+
+        public static void PrintArray(string[] array, string message)
+        {
+            System.Console.WriteLine(message);
+            Console.WriteLine(string.Join(", ", array));
+            Console.WriteLine("\n");
+        }
+
         public static void FillArrayRndm(int[] array)
         {
             Random rnd = new Random();
@@ -73,60 +82,35 @@ namespace FirstQuarterTest
             return new int[size];
         }
 
+        public static string[] CreateStringArray(int size)
+        {
+            return new string[size];
+        }
 
+        public static string[] FreeSizedArr(string message)
+        {            
+            string[] array = new string[0];
+            System.Console.WriteLine(message);
+            
+            int i = 0;
+            do
+            {
+                Array.Resize(ref array, array.Length + 1);
+                array[i] = Console.ReadLine();
+                i++;
+            } while (array[i-1] != String.Empty);
+            Array.Resize(ref array, array.Length - 1);
+            return array;
+        }
 
         public static void SetFontColor(int clr)
         {
-            switch (clr)
-            {
+            ConsoleColor[] MyConsoleColors = new ConsoleColor[] { ConsoleColor.Blue, ConsoleColor.Cyan, ConsoleColor.DarkBlue, 
+                ConsoleColor.DarkCyan, ConsoleColor.DarkGray, ConsoleColor.DarkGreen, ConsoleColor.DarkMagenta, ConsoleColor.DarkRed,
+                ConsoleColor.DarkYellow, ConsoleColor.Gray, ConsoleColor.Green, ConsoleColor.Magenta, ConsoleColor.Red, ConsoleColor.White,
+                ConsoleColor.Yellow};
 
-                case 1:
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    break;
-                case 2:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    break;
-                case 3:
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    break;
-                case 4:
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                    break;
-                case 5:
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    break;
-                case 6:
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    break;
-                case 7:
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    break;
-                case 8:
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                case 9:
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    break;
-                case 10:
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    break;
-                case 11:
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    break;
-                case 12:
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    break;
-                case 13:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    break;
-                case 14:
-                    Console.ForegroundColor = ConsoleColor.White;
-                    break;
-                case 15:
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    break;
-
-            }
+            Console.ForegroundColor = MyConsoleColors[clr];            
         }
 
         public static async void RunningString(string endmessage, int delayMs)
@@ -161,12 +145,11 @@ namespace FirstQuarterTest
 
                         SetFontColor(rnd.Next(1, 16));
                     }
-
                 }
             }
         }
 
-       public static void End()
+        public static void End()
         {
             Console.ReadKey();
             return;
